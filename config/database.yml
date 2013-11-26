@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: jsonapi_dev
+  pool: 5
+  username: rails
+  password: '!QAZxsw2#EDC'
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: jsonapi_test
+  pool: 5
+  username: rails
+  password: '!QAZxsw2#EDC'
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: jsonapi
+  pool: 5
+  username: rails
+  password: '!QAZxsw2#EDC'
