@@ -4,13 +4,11 @@ class UsersController < ApplicationController
   respond_to :json
 
   def index
-    users = if params[:id]
+    @users = if params[:id]
       User.where('id in (?)', params[:id].split(','))
     else
       User.all
     end
-    
-    render json: users
   end
   
   def create

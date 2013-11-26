@@ -5,13 +5,13 @@ class ArticlesController < ApplicationController
   respond_to :json
 
   def index
-    articles = if params[:id]
+    @articles = if params[:id]
       Article.where("id in (?) #{@user_clause}", params[:id].split(','))
     else
       @user ? @user.articles : Article.all
     end
   
-    render json: articles, only: [ :id, :title, :user_id ]
+    @comments = Comment.where('article_id = ?', @articles[0]) if @articles.length == 1
   end
   
   def create

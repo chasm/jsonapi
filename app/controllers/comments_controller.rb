@@ -5,13 +5,11 @@ class CommentsController < ApplicationController
   respond_to :json
 
   def index
-    comments = if params[:id]
+    @comments = if params[:id]
       Comment.where("id in (?) #{@parent_clause}", params[:id].split(','))
     else
       @parent ? @parent.comments : Comment.all
     end
-
-    render json: comments
   end
   
   def create
